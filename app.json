@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "android-background-audio-recording",
-    "slug": "android-background-audio-recording",
+    "name": "bug-expo-av-android-recording-in-background-muted-after-1-minute",
+    "slug": "bug-expo-av-android-recording-in-background-muted-after-1-minute",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,11 +11,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
       "adaptiveIcon": {
