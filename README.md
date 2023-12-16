@@ -1,13 +1,14 @@
 # Expo AV Android Recording In Background Muted After 1 Minute
 
-Issue URL:
+Issue URL: https://github.com/expo/expo/issues/25977
 
 ## Expected behaviour
 
-The user uses an Android phone.
-The user clicks on the "Start recording" button to start the recording.
-The user locks his phone for more than a minute.
-The user unlocks his phone and clicks on "Stop recording" to stop the recording.
+_The user uses an Android phone._
+
+- The user clicks on the "Start recording" button to start the recording.
+- The user locks his phone for more than a minute.
+- The user unlocks his phone and clicks on "Stop recording" to stop the recording.
 
 => The user can listen to the whole recording from begining to end by clicking on the "Play audio" button.
 
