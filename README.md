@@ -2,6 +2,8 @@
 
 Issue URL: https://github.com/expo/expo/issues/25977
 
+Fix URL: https://github.com/RilDev/bug-expo-av-android-recording-in-background-muted-after-1-minute/tree/fix
+
 ## Expected behaviour
 
 _The user uses an Android phone._
