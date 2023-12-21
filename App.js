@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { useState, useRef } from "react";
 import { Audio } from "expo-av";
+import notifee from "@notifee/react-native";
 
 const RecordingStatus = {
   notRecording: "not recording",
@@ -12,6 +13,13 @@ const AudioStatus = {
   notPlaying: "not playing",
   playing: "playing",
 };
+
+// 1. Register the foreground service
+notifee.registerForegroundService(() => {
+  return new Promise(() => {
+    // Long running task...
+  });
+});
 
 export default function App() {
   const [recordingStatus, setRecordingStatus] = useState(
@@ -37,6 +45,21 @@ export default function App() {
 
       setRecording(recording);
       setRecordingStatus(RecordingStatus.recording);
+
+      // 2. Start the foreground service
+      const channelId = await notifee.createChannel({
+        id: "recording",
+        name: "Recording",
+      });
+
+      notifee.displayNotification({
+        title: "Android audio background recording",
+        body: "recording...",
+        android: {
+          channelId,
+          asForegroundService: true,
+        },
+      });
     } catch (error) {
       console.error(error);
     }
@@ -54,6 +77,9 @@ export default function App() {
       console.error(error);
     }
     setRecordingStatus(RecordingStatus.notRecording);
+
+    // 3. Stop the foreground service
+    await notifee.stopForegroundService();
   };
 
   const startAudio = async () => {
