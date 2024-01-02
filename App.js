@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { useState, useRef } from "react";
 import { Audio } from "expo-av";
-import notifee from "@notifee/react-native";
+import notifee, { AndroidImportance } from "@notifee/react-native";
 
 const RecordingStatus = {
   notRecording: "not recording",
@@ -58,6 +58,7 @@ export default function App() {
         android: {
           channelId,
           asForegroundService: true,
+          importance: AndroidImportance.HIGH,
         },
       });
     } catch (error) {
